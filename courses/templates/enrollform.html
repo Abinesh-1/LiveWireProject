@@ -1,0 +1,60 @@
+{% extends 'includes/base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="py-5" style="background: linear-gradient(to right, #e3f2fd, #bbdefb);">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="card shadow-lg border-0 rounded-4 p-4">
+                    <div class="card-body">
+                        <div class="text-center mb-4">
+                            <img src="{% static 'assets/img/livewirelogo.png' %}" alt="Livewire Logo" class="mb-3" style="width: 150px;">
+                            <h3 class="fw-bold text-primary">Enroll for Python Course</h3>
+                            <p class="text-muted">Kickstart your journey with Livewire Python courses</p>
+                        </div>
+
+                        {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-success{% endif %} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                        {% endif %}
+
+                        <form method="post" action="{% url 'livewire:enroll' %}">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="name" class="form-label fw-semibold">Name</label>
+                                <input type="text" class="form-control rounded-pill px-4 py-2" id="name" name="name"  required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label fw-semibold">Email</label>
+                                <input type="email" class="form-control rounded-pill px-4 py-2" id="email" name="email"  required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="course" class="form-label fw-semibold">Course</label>
+                                <select class="form-select rounded-pill px-4 py-2" id="course" name="course" required>
+                                    <option selected disabled>Select a course</option>
+                                    <option value="Python Basic">Python Basic</option>
+                                    <option value="Python Advanced">Python Advanced</option>
+                                    <option value="Django Full-Stack">Django Full-Stack</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100 rounded-pill py-2 fw-bold shadow-sm">
+                                Enroll Now
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+

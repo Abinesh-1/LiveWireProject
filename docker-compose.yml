@@ -1,0 +1,104 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:8
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE_NAME}
+      MYSQL_USER: ${DATABASE_USER}
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost"]
+      interval: 5s
+      retries: 10
+      start_period: 10s
+
+  web:
+    build: .
+    container_name: django_web
+    command: gunicorn main.wsgi:application --bind 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - static_volume:/app/staticfiles   # ⭐ VERY IMPORTANT
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_USER: ${DATABASE_USER}
+      PMA_PASSWORD: ${DATABASE_PASSWORD}
+    ports:
+      - "8080:80"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  mysql_data:
+  static_volume:
+
+
+# version: "3.9"
+
+# services:
+#   db:
+#     image: mysql:8
+#     container_name: mysql_db
+#     environment:
+#       MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+#       MYSQL_DATABASE: ${DATABASE_NAME}
+#       MYSQL_USER: ${DATABASE_USER}
+#       MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+#     ports:
+#       - "3307:3306"
+#     volumes:
+#       - mysql_data:/var/lib/mysql
+#     healthcheck:
+#       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+#       interval: 5s
+#       retries: 5
+#       start_period: 5s
+
+#   web:
+#     build: .
+#     container_name: django_web
+#     command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000 --noreload"
+#     ports:
+#       - "8000:8000"
+#     volumes:
+#       - .:/app
+#     depends_on:
+#       - db
+#     env_file:
+#       - .env
+#     stdin_open: true
+#     tty: true
+
+#   phpmyadmin:
+#     image: phpmyadmin/phpmyadmin
+#     container_name: phpmyadmin
+#     environment:
+#       PMA_HOST: db
+#       PMA_USER: ${DATABASE_USER}
+#       PMA_PASSWORD: ${DATABASE_PASSWORD}
+#     ports:
+#       - "8080:80"
+#     depends_on:
+#       - db
+
+# volumes:
+#   mysql_data:

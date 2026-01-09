@@ -1,0 +1,446 @@
+{% extends 'includes/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Hero Section -->
+  <section class="d-flex align-items-center text-white" style="height:100vh; background: linear-gradient(to right, #1e3c72, #2a5298);">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 text-center text-lg-start mb-4 mb-lg-0">
+          <h1 class="display-4 fw-bold mb-3">Master Cybersecurity – From Beginner to Pro</h1>
+          <p class="lead mb-4">Learn the world’s most in-demand cybersecurity skills with hands-on projects, expert guidance, and real-world applications.</p>
+          <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
+            {% if not user.is_authenticated %}
+            <a href="{% url 'livewire:signin' %}" class="btn btn-light btn-lg rounded-pill px-5 fw-bold shadow">Enroll</a>
+            {% else %}
+            <a href="{% url 'livewire:enroll' %}"  class="btn btn-light btn-lg rounded-pill px-5 fw-bold shadow">Enroll</a>
+            {% endif %}
+            <a href="#" class="btn btn-outline-light btn-lg rounded-pill px-5 fw-bold">Contact Us</a>
+          </div>
+        </div>
+        <div class="col-lg-6 text-center">
+          <img src="{% static 'assets/img/image.png' %}" class="img-fluid shadow-lg" alt="Cybersecurity Image" style="max-height:80vh; width:100%; object-fit:contain;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Who This Course is For Section -->
+
+
+<section class="py-5" style="background: linear-gradient(to right, #0f172a, #1e3a8a);">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-5 display-4 text-white" style="text-shadow: 2px 2px 10px rgba(0,0,0,0.5);">
+      Who This Course is For
+    </h2>
+
+    <div class="row g-4">
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 text-center border-0 shadow-lg rounded-5 hover-blast" style="background: linear-gradient(135deg, #6366f1, #818cf8); color: #fff;">
+          <div class="card-body d-flex flex-column align-items-center p-4">
+            <img src="{% static 'assets/img/course-for-1.png' %}" alt="Aspiring Cybersecurity Professionals" class="img-fluid mb-3" style="max-width: 90px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));">
+            <h5 class="fw-bold mb-2">Aspiring Cybersecurity Professionals</h5>
+            <p class="small mb-0">Start a career in cybersecurity and learn essential skills with confidence.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 text-center border-0 shadow-lg rounded-5 hover-blast" style="background: linear-gradient(135deg, #10b981, #6ee7b7); color: #fff;">
+          <div class="card-body d-flex flex-column align-items-center p-4">
+            <img src="{% static 'assets/img/course-for-2.png' %}" alt="IT Professionals" class="img-fluid mb-3" style="max-width: 90px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));">
+            <h5 class="fw-bold mb-2">IT Professionals</h5>
+            <p class="small mb-0">Upskill and specialize in cybersecurity to advance your IT career.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 text-center border-0 shadow-lg rounded-5 hover-blast" style="background: linear-gradient(135deg, #facc15, #f59e0b); color: #fff;">
+          <div class="card-body d-flex flex-column align-items-center p-4">
+            <img src="{% static 'assets/img/course-for-3.png' %}" alt="College Students" class="img-fluid mb-3" style="max-width: 90px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));">
+            <h5 class="fw-bold mb-2">College Students</h5>
+            <p class="small mb-0">Gain hands-on cybersecurity knowledge alongside your studies.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 text-center border-0 shadow-lg rounded-5 hover-blast" style="background: linear-gradient(135deg, #f43f5e, #fda4af); color: #fff;">
+          <div class="card-body d-flex flex-column align-items-center p-4">
+            <img src="{% static 'assets/img/course-for-4.png' %}" alt="Career Switchers" class="img-fluid mb-3" style="max-width: 90px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));">
+            <h5 class="fw-bold mb-2">Professionals Switching Careers</h5>
+            <p class="small mb-0">Transition into cybersecurity from other fields with confidence.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center mt-5">
+      {% if not user.is_authenticated %}
+      <a href="{% url 'livewire:signin' %}" class="btn btn-gradient btn-lg px-5 py-3 fw-bold shadow-lg animate__animated animate__heartBeat animate__slower">
+        Enroll Now
+      </a>
+      {% else %}
+      <a href="{% url 'livewire:enroll' %}" class="btn btn-gradient btn-lg px-5 py-3 fw-bold shadow-lg animate__animated animate__heartBeat animate__slower">
+        Enroll Now
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hover-blast {
+    transition: transform 0.5s ease, box-shadow 0.5s ease, filter 0.5s ease;
+  }
+  .hover-blast:hover {
+    transform: translateY(-15px) scale(1.05);
+    box-shadow: 0 25px 40px rgba(0,0,0,0.25);
+    filter: brightness(1.15);
+  }
+
+  .btn-gradient {
+    background: linear-gradient(135deg, #f43f5e, #ec4899);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .btn-gradient:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+  }
+
+  .animate__slower {
+    --animate-duration: 2s;
+  }
+</style>
+
+<!-- Students Projects Section -->
+<section class="py-5" style="background: linear-gradient(to right, #fff8f0, #fff1e0);">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-5 text-primary display-5">Our Students Projects</h2>
+    <div class="row g-4 text-center">
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm">
+          <img src="{% static 'assets/img/ccs-1.jpg'%}" class="card-img-top" alt="Cybersecurity Dashboard" style="height: 220px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="fw-bold text-primary">Cybersecurity Dashboard</h5>
+            <p>A real-world project demonstrating network security monitoring tools.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm">
+          <img src="{% static 'assets/img/ccs-2.jpg'%}" class="card-img-top" alt="Penetration Testing Lab" style="height: 220px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="fw-bold text-primary">Penetration Testing Lab</h5>
+            <p>Hands-on project showcasing vulnerability testing and security analysis.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm">
+          <img src="{% static 'assets/img/ccs-3.jpg'%}" class="card-img-top" alt="Security Automation Tool" style="height: 220px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="fw-bold text-primary">Security Automation Tool</h5>
+            <p>Students built an automated tool to detect and fix common security issues.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- What Will You Achieve Section -->
+<section class="py-5" style="background: linear-gradient(to right, #e0f7fa, #e3f2fd);">
+  <div class="container">
+    <!-- Section Title -->
+    <h2 class="text-center fw-bold mb-5 text-primary display-5">What Will You Achieve At The End Of This Course</h2>
+    
+    <div class="row g-5 align-items-stretch">
+      <!-- Left Column: Key Achievements with Icons -->
+      <div class="col-lg-4">
+        <div class="list-group shadow-lg rounded-4 overflow-hidden">
+          <div class="list-group-item list-group-item-action list-group-item-primary fw-bold d-flex align-items-center py-3">
+            <i class="bi bi-code-slash me-3 fs-4"></i> Write Code Like a Pro
+          </div>
+          <div class="list-group-item list-group-item-action fw-bold d-flex align-items-center py-3">
+            <i class="bi bi-folder2-open me-3 fs-4"></i> Build Real-World Projects
+          </div>
+          <div class="list-group-item list-group-item-action fw-bold d-flex align-items-center py-3">
+            <i class="bi bi-diagram-3 me-3 fs-4"></i> Master OOP Concepts
+          </div>
+          <div class="list-group-item list-group-item-action fw-bold d-flex align-items-center py-3">
+            <i class="bi bi-gear me-3 fs-4"></i> Automate & Analyze with Python
+          </div>
+          <div class="list-group-item list-group-item-action fw-bold d-flex align-items-center py-3">
+            <i class="bi bi-award me-3 fs-4"></i> Showcase Your Portfolio
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Detailed Cards -->
+      <div class="col-lg-8">
+        <div class="row g-4">
+          <div class="col-12">
+            <div class="card border-0 shadow-lg p-4 rounded-4 hover-zoom">
+              <h5 class="fw-bold text-primary"><i class="bi bi-code-slash me-2"></i> Write Code Like a Pro</h5>
+              <p>Write clean, efficient, and professional Python code ready for real-world applications.</p>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="card border-0 shadow-lg p-4 rounded-4 hover-zoom">
+              <h5 class="fw-bold text-primary"><i class="bi bi-folder2-open me-2"></i> Build Real-World Projects</h5>
+              <p>Create practical projects that solve real problems and build your portfolio.</p>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="card border-0 shadow-lg p-4 rounded-4 hover-zoom">
+              <h5 class="fw-bold text-primary"><i class="bi bi-diagram-3 me-2"></i> Master OOP Concepts</h5>
+              <p>Understand and implement Object-Oriented Programming in Python effectively.</p>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="card border-0 shadow-lg p-4 rounded-4 hover-zoom">
+              <h5 class="fw-bold text-primary"><i class="bi bi-gear me-2"></i> Automate & Analyze with Python</h5>
+              <p>Automate tasks, analyze data, and build web applications with confidence.</p>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="card border-0 shadow-lg p-4 rounded-4 hover-zoom">
+              <h5 class="fw-bold text-primary"><i class="bi bi-award me-2"></i> Showcase Your Portfolio</h5>
+              <p>Create a standout portfolio to impress employers and clients alike.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Enroll Button -->
+   <div class="d-flex justify-content-center mt-5">
+      {% if not user.is_authenticated %}
+      <a href="{% url 'livewire:signin' %}" class="btn btn-gradient btn-lg px-5 py-3 fw-bold shadow-lg animate__animated animate__heartBeat animate__slower">
+        Enroll Now
+      </a>
+      {% else %}
+      <a href="{% url 'livewire:enroll' %}" class="btn btn-gradient btn-lg px-5 py-3 fw-bold shadow-lg animate__animated animate__heartBeat animate__slower">
+        Enroll Now
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+/* Hover Effects */
+.hover-zoom:hover {
+  transform: translateY(-5px);
+  transition: all 0.3s ease-in-out;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+}
+</style>
+
+
+<section class="py-5" style="background: #f8f9fa;">
+  <div class="container">
+    <!-- Course Modules -->
+    <h2 class="text-center fw-bold mb-5 text-primary">Course Modules</h2>
+    <div class="accordion shadow-sm" id="courseModules">
+      <!-- Module 1 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="module1">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+            1. Introduction to Cybersecurity
+          </button>
+        </h2>
+        <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#courseModules">
+          <div class="accordion-body">
+            Learn the fundamentals of cybersecurity, including concepts, threats, and defenses.
+          </div>
+        </div>
+      </div>
+      <!-- Module 2 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="module2">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+            2. Network Security Basics
+          </button>
+        </h2>
+        <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#courseModules">
+          <div class="accordion-body">
+            Understand network vulnerabilities, firewalls, and common security protocols.
+          </div>
+        </div>
+      </div>
+      <!-- Module 3 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="module3">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+            3. Ethical Hacking & Penetration Testing
+          </button>
+        </h2>
+        <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#courseModules">
+          <div class="accordion-body">
+            Learn to ethically identify vulnerabilities and perform penetration testing.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div class="mt-5">
+      <h2 class="text-center fw-bold mb-5 text-primary">What Our Authors & Students Say</h2>
+
+      <!-- Google Reviews Header -->
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
+        <!-- Left Side -->
+        <div class="d-flex align-items-center mb-3 mb-md-0">
+          <img src="{% static 'assets/img/google-logo.jpeg'%}" alt="Google Logo" class="me-2" style="height: 30px;">
+          <h5 class="fw-bold mb-0">What Our Authors & Students Say</h5>
+        </div>
+        <!-- Right Side -->
+        <div>
+          <a href="#" class="btn btn-outline-primary btn-sm">Review us on Google</a>
+        </div>
+      </div>
+
+      <!-- Rating Row -->
+      <div class="d-flex align-items-center mb-5">
+        <h4 class="mb-0 me-3 text-primary">5.0</h4>
+        <small class="text-muted">(17 Reviews)</small>
+      </div>
+
+      <!-- Reviews Grid -->
+      <div class="row g-4">
+        <!-- Review 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card p-3 h-100 shadow-sm border-0">
+            <div class="d-flex align-items-center mb-3">
+              <img src="{% static 'assets/img/profile1.jpg'%}" alt="Samundeeswari N" class="rounded-circle me-3" style="width:50px; height:50px;">
+              <div>
+                <h6 class="mb-0 fw-bold">Samundeeswari N</h6>
+                <small class="text-warning">★★★★★</small>
+              </div>
+            </div>
+            <p class="mb-0">Cool</p>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card p-3 h-100 shadow-sm border-0">
+            <div class="d-flex align-items-center mb-3">
+              <img src="{% static 'assets/img/profile2.jpg'%}" alt="Sumanraj D" class="rounded-circle me-3" style="width:50px; height:50px;">
+              <div>
+                <h6 class="mb-0 fw-bold">Sumanraj D</h6>
+                <small class="text-warning">★★★★★</small>
+              </div>
+            </div>
+            <p class="mb-0">GoCourse was a great free resources learning platform for beginners.</p>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card p-3 h-100 shadow-sm border-0">
+            <div class="d-flex align-items-center mb-3">
+              <img src="{% static 'assets/img/profile3.jpg'%}" alt="Lavanya V" class="rounded-circle me-3" style="width:50px; height:50px;">
+              <div>
+                <h6 class="mb-0 fw-bold">Lavanya V</h6>
+                <small class="text-warning">★★★★★</small>
+              </div>
+            </div>
+            <p class="mb-0">This website provides useful, constructive feedback. Be detailed, specific, and honest.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5" style="background: #f8f9fa;">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-5 text-primary">FAQ</h2>
+    
+    <div class="accordion shadow-sm" id="faqAccordion">
+      <!-- Q1 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq1">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFaq1">
+            Q1: Do I need prior coding knowledge?
+          </button>
+        </h2>
+        <div id="collapseFaq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            No, this course is designed for beginners, so no prior coding knowledge is required.
+          </div>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq2">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFaq2">
+            Q2: How long will I have access to the course?
+          </button>
+        </h2>
+        <div id="collapseFaq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            You will have lifetime access to the course materials after enrollment.
+          </div>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq3">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFaq3">
+            Q3: Will I get a certificate?
+          </button>
+        </h2>
+        <div id="collapseFaq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Yes, upon successful completion, you will receive a certificate of completion.
+          </div>
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq4">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFaq4">
+            Q4: What if I get stuck?
+          </button>
+        </h2>
+        <div id="collapseFaq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            You can ask questions in the course forum or reach out to instructors for guidance.
+          </div>
+        </div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq5">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFaq5">
+            Q5: Can I learn at my own pace?
+          </button>
+        </h2>
+        <div id="collapseFaq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Absolutely! The course is self-paced, so you can learn according to your schedule.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+# Python / Django
+venv/               # virtual environment
+__pycache__/        # Python cache folders
+*.pyc               # compiled Python files
+db.sqlite3          # local database
+.env                # environment variables
+*.log               # log files
+
+# Docker
+docker-compose.override.yml
+*.dockerfile
+*.dockerignore
+
+# Optional: OS files
+.DS_Store
+desktop.ini
