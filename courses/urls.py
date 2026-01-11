@@ -12,5 +12,6 @@ urlpatterns = [
     path("signin/", views.signin, name="signin"),
     path("signup/", views.signup, name="signup"),
     path("signout/", views.signout, name="signout"),
-    path("enroll/", views.enroll, name="enroll")
+    path("enroll/", views.enroll, name="enroll"),
+    path("api/users/", views.api_users, name="api_users"),
 ]
