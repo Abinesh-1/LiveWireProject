@@ -8,6 +8,8 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.template.loader import render_to_string
+from django.http import JsonResponse
+
 
 # Home page view
 def index(request):
@@ -99,3 +101,9 @@ def enroll(request):
         return redirect("livewire:index")  
 
     return render(request, "enrollform.html") 
+
+
+def api_users(request):
+    users = User.objects.all().values('id', 'username', 'email', 'date_joined')
+    users_list = list(users)
+    return JsonResponse({'users': users_list}, safe=False)
